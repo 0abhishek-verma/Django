@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block title %}Form{% endblock %}
+
+
+
+
+
+{% block content %}
+
+{% include "navbar1.html" %}
+    {% comment %} <style>
+        div{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        h2 {
+            color: #333;
+            font-size: 24px;
+            text-align: center;
+        }
+        form {
+            width: 500px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            
+        }
+        label {
+            text-align: left;
+            font-size: 24px;
+            display: inline-block;
+            margin-bottom: 1px;
+        }
+        input[type="text"],
+        input[type="textarea"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+           max-width: 90%;
+        }
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style> {% endcomment %}
+
+
+
+    <h2>Form</h2>
+    <div>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title"><br><br>
+            <label for="description">Description:</label><br>
+            <input type="textarea" id="des" name="des" rows="6" cols="8"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+{% endblock %}
