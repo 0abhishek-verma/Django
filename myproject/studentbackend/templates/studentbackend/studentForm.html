@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Student Form{% endblock %}
+{% block content %}
+<style>
+    div{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+    h1 {
+        color: #333;
+        font-size: 24px;
+        text-align: center;
+    }
+    form {
+        width: 500px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    label {
+        text-align: left;
+        font-size: 24px;
+        display: inline-block;
+        margin-bottom: 1px;
+    }
+    input[type="text"],
+    input[type="textarea"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 20px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+       max-width: 90%;
+    }
+    input[type="submit"] {
+        background-color: #28a745;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+<h1>STUDENT FORM</h1>
+<div>
+    <form method="POST" enctype="multipart/form-data">
+        {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+        {% if success_message %}
+            <p style="color: green;">{{ success_message }}</p>
+        {% endif %}
+        {% csrf_token%}
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" name="first_name" required><br>
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" name="last_name" ><br>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" name="phone" required><br>
+        <label for="address">Address</label>
+        <input type="textarea" id="address" name="address" ><br>
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" ><br>
+        <label for="state">State</label>
+        <input type="text" id="state" name="state" ><br>
+        <label for="country">Country</label>
+        <input type="text" id="country" name="country" required><br>
+        <label for="zip_code">Zip Code</label>
+        <input type="text" id="zip_code" name="zip_code" ><br>
+        <label for="date_of_birth">Date of Birth</label>
+        <input type="date" id="date_of_birth" name="date_of_birth" ><br>
+        <input type="submit" value="Submit">
+        <input type="file" id="file" name="file" ><br>
+        <label for="file">Upload File</label>
+    </form>
+</div>
+{% endblock content %}

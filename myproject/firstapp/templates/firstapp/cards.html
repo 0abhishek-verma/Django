@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block title %}cards{% endblock %}
+{% block content %}
+<style>
+    .card {
+        width: 18rem;
+        margin: 10px;
+        display: inline-block;
+        vertical-align: top;
+    }
+    .card-body {
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .card-title {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+    }
+    .card-text {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+</style>
+{%for i in mycard %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{ i.title }}</h5>
+            <p class="card-text">{{ i.description }}</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <ul>
+                <li><a href="{% url 'delete' i.id %}"><i class="fa-solid fa-trash"></i></a></li>
+                <li><a href="{% url 'update' i.id %}"></a><i class="fa-solid fa-pen"></i></li>
+            </ul>
+        </div>
+    </div>
+{% endfor %}
+{% endblock %}
